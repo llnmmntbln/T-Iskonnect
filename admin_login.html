@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/icon.png" type="image/x-icon">
+    <title>Admin Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .navbar {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: #0C3542;
+            top: 0;
+            left: 0;
+            position: fixed;
+            align-items: center;
+            z-index: 99;
+            height: 90px;
+            border-bottom: 2px solid rgba(11, 0, 39, 0.068);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .navbar .logo-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar .nav-links {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar-inverse .navbar-nav>li>a {
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .navbar-inverse .navbar-nav>li>a:hover {
+            color: #EBA814;
+        }
+
+        .navbar img {
+            width: 100px;
+        }
+
+        .container {
+            background: linear-gradient(rgba(53, 57, 66, 0.8), rgba(73, 111, 216, 0.8)),
+                url('https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/maxresdefault.jpg') center/cover no-repeat;
+            width: -webkit-fill-available;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .box {
+            background-color: #0C3542;
+            border-radius: 10px;
+            border: #0C3542;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+
+        input[type=checkbox],
+        input[type=radio] {
+            margin: 0px 2px 0;
+            line-height: normal;
+        }
+
+        .yellow-text {
+            color: #EBA814;
+        }
+
+        .yellow-text:hover {
+            color: #EBA814;
+        }
+
+        .forgot-password {
+            color: #EBA814;
+            margin-top: 10px;
+        }
+
+        .forgot-password:hover {
+            color: #EBA814;
+        }
+
+        .white-text {
+            color: white;
+            margin-top: 1.5vh;
+            width: 100%;
+            background-color: #EBA814;
+            border: #EBA814;
+            border-radius: 5px;
+            height: 5vh;
+            font-size: 2vh;
+        }
+
+        .white-text-only {
+            color: white;
+            display: flex;
+            margin-top: 1vh;
+            align-items: center;
+        }
+
+        .sign-up {
+            color: white;
+            text-align: center;
+            margin-top: 1.5vh;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .navbar-inverse .navbar-nav>li>a {
+                margin-right: -50px;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+    <nav class="navbar navbar-inverse">
+        <div class="logo-image">
+            <img src="https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/logo%20(1).png" class="img-fluid">
+        </div>
+        <div class="nav-links">
+            <ul class="navbar-nav ms-auto" style="list-style-type: none;">
+                <li><a class="nav-link" href="#home">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="box">
+            <form action="">
+                <h1 class="yellow-text"><b>ADMIN</b></h1>
+                <input type="text" placeholder="Admin Username" id="adminUsername" name="adminUsername">
+                <input type="password" placeholder="Password" id="adminPassword" name="adminPassword">
+                <button class="white-text">Login</button>
+            </form>
+
+            <div class="option" style="display: flex; justify-content: space-around; margin-top: 2vh;">
+                <p class="white-text-only"> <input type="checkbox"> Remember me</p>
+                <a class="forgot-password" href="">Forgot Password?</a>
+            </div>
+
+            <div class="sign-up">
+                No account yet? <a href="" class="yellow-text">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

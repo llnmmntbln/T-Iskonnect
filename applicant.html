@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Application Form</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/icon.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: #0c3542;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #e4e4e4;
+            border-radius: 2em;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #EBA814;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            margin-top: 10vh;
+        }
+
+        .navbar {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: #0C3542;
+            top: 0;
+            left: 0;
+            position: fixed;
+            align-items: center;
+            z-index: 99;
+            height: 90px;
+            border-bottom: 2px solid rgba(11, 0, 39, 0.068);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .navbar .logo-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar .nav-links {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar-inverse .navbar-nav>li>a {
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .navbar-inverse .navbar-nav>li>a:hover {
+            color: #EBA814;
+        }
+
+        .navbar img {
+            width: 100px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            border-radius: 9px;
+            height: 40px;
+            background-color: #E9E9E4;
+        }
+
+        input[type=text] {
+            width: 90%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto;
+        }
+
+        .application-requirement {
+            background-color: #0C3542;
+            color: white;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        ::file-selector-button {
+            display: none;
+        }
+
+        .attach-file {
+            overflow: hidden;
+            background-color: #E9E9E4;
+            color: #0C3542;
+            text-align-last: center;
+            padding-top: 10px;
+        }
+
+        .status {
+            color: #EBA814;
+        }
+
+        .sbmt {
+            margin-top: 30px;
+            text-align: center;
+            margin-bottom: 3vh;
+        }
+
+        .btn-sbmt {
+            color: #fff;
+            background-color: #EBA814;
+            border: #EBA814;
+            width: 135px;
+            height: 40px;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .btn-sbmt:hover {}
+
+
+        td,
+        th {
+            padding: 5px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0C3542;
+            color: white;
+        }
+
+        .yellow-text {
+            color: #EBA814;
+        }
+
+        @media screen and (max-width: 320px) {
+            body {
+                width: auto;
+            }
+
+            input[type="text"] {
+                width: 100%;
+                font-size: 12px;
+            }
+
+            input[type="file"] {
+                height: 20px;
+                width: 70%;
+                font-size: 6px;
+            }
+
+            .site-wrap {
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+
+            .container {
+                padding-top: 0;
+                margin-top: 0;
+            }
+
+            .btn-sbmt {
+                height: 30px;
+                width: 50%;
+                font-size: 14px;
+            }
+
+            .yellow-text {
+                font-size: 9px;
+            }
+
+            .status {
+                font-size: 8px;
+            }
+
+            .application-requirement {
+                margin: 0;
+                padding: 0;
+            }
+
+            h3 {
+                font-size: 9px;
+            }
+
+            th,
+            td {
+                padding: 3px;
+            }
+
+            h1 {
+                font-size: 16px;
+            }
+
+            h4 {
+                font-size: 7px;
+            }
+
+            label {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+    <nav class="navbar navbar-inverse">
+        <div class="logo-image">
+            <img src="https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/logo%20(1).png" class="img-fluid">
+        </div>
+        <div class="nav-links">
+            <ul class="navbar-nav ms-auto" style="list-style-type: none;">
+                <li><a class="nav-link" href="#home">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <h1><b>Personal</b> Information</h1>
+            <form class="col-xs-12" action="">
+                <div class="col-xs-6 col-sm-4">
+                    <label for="fname">First Name:</label> <br>
+                    <input type="text" id="fname" name="fname">
+                </div>
+                <div class="col-xs-6 col-sm-4">
+                    <label for="lname">Last Name:</label> <br>
+                    <input type="text" id="lname" name="lname">
+                </div>
+                <div class="col-xs-6 col-sm-4">
+                    <label for="gender">Gender:</label> <br>
+                    <input type="text" id="gender" name="gender">
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <label for="email">Email:</label> <br>
+                    <input type="text" id="email" name="email">
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <label for="sidnumber">School ID Number:</label> <br>
+                    <input type="text" id="sidnumber" name="sidnumber">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h1><b>Contact</b> Information</h1>
+            <form class="col-xs-12" action="">
+                <div class="col-sm-6 col-xs-12">
+                    <label for="contact_number">Contact Number:</label> <br>
+                    <input type="text" id="contact_number" name="contact_number">
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <label for="family-profile_no">Family Profile No:</label> <br>
+                    <input type="text" id="family-profile_no" name="family-profile_no">
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <label for="country">Country:</label> <br>
+                    <input type="text" id="country" name="country">
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <label for="region">Region:</label> <br>
+                    <input type="text" id="region" name="region">
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <label for="province">Province:</label> <br>
+                    <input type="text" id="province" name="province">
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <label for="city">City/Municipality:</label> <br>
+                    <input type="text" id="city" name="city">
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <label for="barangay">Barangay:</label> <br>
+                    <input type="text" id="barangay" name="barangay">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h1><b>Applicant</b> Scholarship Requirements</h1>
+            <form class="application-requirement row" action="">
+                <div class="col-xs-12">
+                    <table>
+                        <tr>
+                            <th>
+                                <h3 class="yellow-text">Applicant Requirements</h3>
+                            </th>
+                            <th>
+                                <h3>Action</h3>
+                            </th>
+                            <th>
+                                <h3>Status</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td><label for="educational-assistance-form">
+                                    <h4>Educational Assitance Form</h4>
+                                </label></td>
+                            <td><input type="file" class="attach-file" id="educational-assistance-form"
+                                    name="educational-assistance-form"></td>
+                            <td>
+                                <h4 class="status">Pending</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="ctc-pg">
+                                    <h4>Certified True Copy of Previous Grades</h4>
+                                </label></td>
+                            <td><input type="file" class="attach-file" id="ctc-pg" name="ctc-pg"></td>
+                            <td>
+                                <h4 class="status">Pending</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="school-registration">
+                                    <h4>School Registration</h4>
+                                </label></td>
+                            <td><input type="file" class="attach-file" id="school-registration"
+                                    name="school-registration"></td>
+                            <td>
+                                <h4 class="status">Pending</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="certificate-good-moral">
+                                    <h4>Certificate of Good Moral</h4>
+                                </label></td>
+                            <td><input type="file" class="attach-file" id="certificate-good-moral"
+                                    name="certificate-good-moral"></td>
+                            <td>
+                                <h4 class="status">Pending</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="certificate-residency">
+                                    <h4>Certificate of Residency</h4>
+                                </label></td>
+                            <td><input type="file" class="attach-file" id="certificate-residency"
+                                    name="certificate-residency"></td>
+                            <td>
+                                <h4 class="status">Pending</h4>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+            <div class="sbmt">
+                <button class="btn-sbmt">Submit</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+</body>
+
+</html>
