@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link rel="icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Euskotren_1K.svg/1280px-Euskotren_1K.svg.png"
+      type="image/x-icon">
+   <title>T-Iskonnect</title>
+   <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
+
+      body {
+         line-height: 1.8;
+         color: #202020;
+         font-size: 15px;
+         font-family: 'Lato', sans-serif;
+         z-index: 99;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+         font-weight: 700;
+         letter-spacing: 1px;
+         text-transform: uppercase;
+         color: #2d313a;
+      }
+
+      html {
+         scroll-behavior: smooth;
+      }
+
+      ::-webkit-scrollbar {
+         width: 12px;
+         background: #0c3542;
+      }
+
+      ::-webkit-scrollbar-thumb {
+         background-color: #e4e4e4;
+         border-radius: 2em;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+         background: #EBA814;
+      }
+
+      .title-sm {
+         font-size: 16px;
+         letter-spacing: 1px;
+      }
+
+      a {
+         font-weight: 700;
+         transition: all 0.4s ease;
+         text-decoration: none;
+      }
+
+      img {
+         width: 100%;
+      }
+
+      small {
+         font-size: 12px;
+         letter-spacing: 2px;
+         font-weight: 700;
+         text-transform: uppercase;
+      }
+
+      section {
+         padding-top: 100px;
+         padding-bottom: 100px;
+      }
+
+      .navbar {
+         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+         background-color: #0C3542;
+         top: 0;
+         left: 0;
+         position: fixed;
+         align-items: center;
+         z-index: 99;
+         height: 90px;
+         border-bottom: 2px solid rgba(11, 0, 39, 0.068);
+      }
+
+      .shrink-navbar {
+         height: 75px;
+         transition: height 0.3s ease;
+      }
+
+
+      .logo-text {
+         font-size: 22px;
+         text-transform: uppercase;
+         color: #ffc107 !important;
+      }
+
+      .navbar .nav-link {
+         font-size: 0.9em;
+         text-transform: uppercase;
+         letter-spacing: 1px;
+         color: #fff;
+      }
+
+      button.navbar-toggler {
+         font-size: 1em;
+         right: 10px;
+         top: 20px;
+         position: absolute;
+         color: #0c3542;
+         border: 2px solid #0c3542;
+         background: #f89b31;
+      }
+
+      .btnLogin-popup {
+         width: 120px;
+         height: 50px;
+         background: transparent;
+         border: 2px solid #EBA814;
+         outline: none;
+         border-radius: 6px;
+         cursor: pointer;
+         font-size: 1.1em;
+         color: white;
+         font-weight: 500;
+         margin-top: -.5vh;
+         margin-left: 1vh;
+      }
+
+      .btnLogin-popup:hover {
+         color: white;
+         background: #EBA814;
+         font-weight: 500;
+      }
+
+      .navbar-light .navbar-nav .nav-link.active {
+         color: #EBA814;
+      }
+
+      span {
+         color: #f89b31;
+         font-size: 1.5em;
+      }
+
+      #home {
+         background: linear-gradient(rgba(53, 57, 66, 0.8), rgba(73, 111, 216, 0.8)), url(https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/maxresdefault.jpg);
+         min-height: 100vh;
+         background-size: cover;
+         background-position: center;
+         background-attachment: fixed;
+         background-repeat: no-repeat;
+         display: flex;
+         align-items: center;
+      }
+
+      #home h1 {
+         font-weight: 700;
+      }
+
+      #home p {
+         max-width: 550px;
+         margin: 18px auto;
+      }
+
+      .section-intro {
+         text-align: center;
+         margin-bottom: 60px;
+      }
+
+      .section-intro .hline {
+         width: 120px;
+         height: 2px;
+         background-color: gold;
+         margin: 16px auto 0 auto;
+      }
+
+      .icon-box {
+         width: 60px;
+         height: 60px;
+         background-color: #268ceb;
+         color: #fff;
+         border-radius: 4px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 32px;
+         flex: none;
+      }
+
+      .assistance-item img,
+      .assistance-item .assistance-overlay {
+         transition: all 0.4s ease;
+         width: 100%;
+         height: auto;
+      }
+
+      .assistance-overlay {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(17, 36, 90, 0.9);
+         display: flex;
+         align-items: flex-end;
+         padding: 30px;
+         opacity: 0;
+      }
+
+      .assistance-overlay h3,
+      .assistance-overlay h6 {
+         color: #fff;
+      }
+
+      .assistance-item:hover .assistance-overlay {
+         opacity: 1;
+      }
+
+      .assistance-item:hover img {
+         transform: scale(1.1);
+      }
+
+      .requirements .icon-box {
+         width: 34px;
+         height: 34px;
+         border-radius: 100px;
+         font-size: 24px;
+      }
+
+      .footer {
+         padding-top: 30px;
+         padding-bottom: 30px;
+         border-top: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .logo-image {
+         width: 30%;
+         height: 30%;
+      }
+
+      .popup-container {
+         position: relative;
+      }
+
+      .image {
+         cursor: pointer;
+         max-width: 100%;
+         height: auto;
+         transition: transform 0.2s;
+      }
+
+      .image:hover {
+         transform: scale(1.1);
+      }
+
+      .assistance .container .content {
+         width: 100%;
+      }
+
+      section#assistance.assistance.section {
+         background: #0c3542;
+         ;
+      }
+
+      .assistance-list {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 35px;
+         justify-content: center;
+         margin: 0 auto;
+      }
+
+      .img-card-container {
+         flex: 1;
+         max-width: calc(33.33% - 35px);
+         box-sizing: border-box;
+         position: relative;
+         margin-bottom: 35px;
+      }
+
+      .assistance-list .img-card {
+         position: relative;
+         max-width: 100%;
+         height: 360px;
+         border-radius: 10px;
+         box-shadow: var(--third-color);
+         overflow: hidden;
+         cursor: pointer;
+      }
+
+      .assistance-list .img-card .overlay {
+         transition: 1s ease;
+      }
+
+      .assistance-list .img-card:hover .overlay {
+         z-index: 777;
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         background: var(--bg-transparent-color);
+      }
+
+      .assistance-list .img-card .info {
+         z-index: 777;
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         margin: 20px;
+         color: var(--scroll-down-color);
+         transform: translateY(20px);
+         opacity: 0;
+         transition: .5s ease;
+      }
+
+      .assistance-list .img-card:hover .info {
+         transform: translateY(0);
+         opacity: 1;
+      }
+
+      .assistance-list .img-card .info h3 {
+         font-size: 1.5em;
+      }
+
+      .assistance-list .img-card .info span {
+         font-size: 1.2em;
+      }
+
+      .assistance-list .img-card img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+
+      .assistance-model {
+         z-index: 1000;
+         position: fixed;
+         width: 100%;
+         height: 100vh;
+         top: 0;
+         left: 0;
+         background: var(--bg-transparent-color);
+         backdrop-filter: blur(20px);
+         visibility: hidden;
+         opacity: 0;
+         transition: .3s ease;
+      }
+
+      .assistance-model.active {
+         visibility: visible;
+         opacity: 1;
+      }
+
+      .assistance-model-body {
+         position: relative;
+         background: #0c3542;
+         max-width: 800px;
+         margin: 20px auto;
+         padding: 40px;
+         margin-top: 10vh;
+         border-radius: 10px;
+         transition: .5s ease;
+         transform: translateY(-50px);
+      }
+
+      .assistance-model.active .assistance-model-body {
+         transform: translateY(0);
+      }
+
+      .assistance-close-btn {
+         position: absolute;
+         top: 0;
+         right: 0;
+         margin: 20px;
+         cursor: pointer;
+         color: white;
+      }
+
+      .assistance-close-btn:hover {
+         color: #eba325;
+      }
+
+      .assistance-model-body h3 {
+         font-size: 2em;
+         font-weight: bolder;
+         color: var(--first-color);
+         text-align: center;
+      }
+
+      .assistance-model-body p {
+         color: #ffffff;
+         text-align: center;
+      }
+
+      .assistance-model-body img {
+         width: 75%;
+         margin: 20px 85px;
+         border-radius: 10px;
+      }
+
+      .table-box {
+         margin: 50px auto;
+      }
+
+      .table-row {
+         display: table;
+         width: 80%;
+         margin: 10px auto;
+         font-family: sans-serif;
+         background: transparent;
+         padding: 12px 0;
+         color: #555;
+         font-size: 13px;
+         box-shadow: 0 1px 4px 0px rgba(0, 0, 50, 0.3);
+      }
+
+      .table-head {
+         background: #0C3542;
+         box-shadow: none;
+         color: #fff;
+         font-weight: 600;
+         margin-top: 10vh;
+      }
+
+      .table-head .table-cell {
+         border-right: none;
+      }
+
+      .table-cell {
+         display: table-cell;
+         width: 20%;
+         text-align: center;
+         padding: 4px 0;
+         border-right: 1px solid #d6d4d4;
+         vertical-align: middle;
+      }
+
+      .first-cell {
+         text-align: left;
+         padding-left: 10px;
+      }
+
+      .last-cell {
+         border-right: none;
+      }
+
+      a {
+         text-decoration: none;
+         color: #555;
+      }
+
+      @media only screen and (max-width: 600px) {
+         .table-row {
+            font-size: 11px;
+         }
+      }
+
+      section#events h1 {
+         display: flex;
+         padding: 0;
+         left: 0;
+         right: 0;
+         position: absolute;
+         justify-content: center;
+         font-size: 3rem;
+      }
+
+      .assistance span1 {
+         color: #f89b31;
+         font-size: 1.2rem;
+         font-weight: 700;
+      }
+
+      .assistance span {
+         color: #ffffff;
+         font-size: 1.2rem;
+         font-weight: 700;
+      }
+
+      .apply-button {
+         padding: 10px 20px;
+         font-size: 16px;
+         background-color: #eba325;
+         color: white;
+         border: none;
+         border-radius: 5px;
+         cursor: pointer;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .apply-button:hover {
+         color: #0C3542;
+         border: 2px solid #ffffff;
+         transition: transform .5s ease;
+      }
+
+      .img-card-container h3 {
+         color: #f89b31;
+      }
+
+      .scroll-to-top {
+         position: fixed;
+         bottom: 25px;
+         right: 25px;
+         display: none;
+         font-size: 10px;
+         border: none;
+         outline: none;
+         background-color: #0c3542;
+         color: #fff;
+         cursor: pointer;
+         border-radius: 20%;
+         padding: 10px;
+         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+         transition: background-color 0.3s;
+      }
+
+      .scroll-to-top:hover {
+         background-color: #EBA814;
+      }
+
+      .wrapper {
+         position: fixed;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 400px;
+         max-width: 80%;
+         height: 500px;
+         max-height: 80vh;
+         background-color: #0c3542;
+         border: 2px solid rgba(255, 255, 255, 0);
+         border-radius: 20px;
+         box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         transform: translate(-50%, -50%) scale(0);
+         opacity: 0;
+         transition: transform 0.5s ease, opacity 0.5s ease;
+         z-index: 10000;
+         backdrop-filter: blur(30px);
+         /* Add backdrop filter with blur effect */
+      }
+
+      .wrapper.active-popup {
+         position: fixed;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%) scale(1);
+         background-color: #0c3542;
+         border: 2px solid rgba(255, 255, 255, 0);
+         border-radius: 20px;
+         box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         opacity: 1;
+         transition: transform 0.5s ease, opacity 0.5s ease;
+         backdrop-filter: blur(30px);
+         /* Add backdrop filter with blur effect */
+         z-index: 10000;
+      }
+
+
+      .wrapper .assistance-close-btn {
+         position: absolute;
+         top: 0;
+         right: 0;
+         width: 45px;
+         height: 45px;
+         font-size: 2em;
+         color: #fff;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         z-index: 1;
+
+      }
+
+      .wrapper .assistance-close-btn:hover {
+         color: #eba325;
+      }
+
+      .wrapper h7 {
+         color: white;
+      }
+
+      .wrapper span {
+         color: #f89b31;
+         font-size: 1em;
+      }
+
+      .wrapper .form-box {
+         display: flex;
+         width: 100%;
+         padding: 40px;
+         flex-direction: column;
+         align-items: center;
+      }
+
+      .button .btnapplicant,
+      .btnmaintainer {
+         background-color: #eba325;
+         color: white;
+         border-radius: 5px;
+         width: 160px;
+         height: 40px;
+         margin-bottom: 1vh;
+         font-size: 1em;
+      }
+
+      .btnmaintainer:hover {
+         color: #0C3542;
+      }
+
+      .btnapplicant:hover {
+         color: #0C3542;
+      }
+
+      @media only screen and (max-width: 400px) {
+         .navbar .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+         }
+
+         .btnLogin-popup {
+            margin-left: 14.5vh;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+         }
+
+         section#events h1 {
+            font-size: 2rem;
+         }
+
+         .assistance-model-body {
+            width: 360px;
+         }
+
+         .assistance span1 {
+            font-size: 1em;
+         }
+
+         .img-card-container h3 {
+            font-size: 1.2em;
+         }
+      }
+
+      @media only screen and (max-width: 991px) {
+         .navbar .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+         }
+
+         .btnLogin-popup {
+            margin-left: 14.5vh;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+         }
+
+      }
+
+      .overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: url(https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/maxresdefault.jpg) center/cover fixed no-repeat;
+         filter: blur(8px);
+         z-index: 98;
+         /* Place it below the popup */
+         display: none;
+      }
+
+      .active-overlay {
+         display: block;
+      }
+
+      body.popup-open {
+         overflow: hidden;
+      }
+   </style>
+</head>
+
+
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+   <div class="overlay"></div>
+   <button id="scrollToTopBtn" class="btn btn-primary scroll-to-top"><i class="material-icons">arrow_upward</i></button>
+
+   <nav class="navbar fixed-top navbar-expand-lg navbar-light shrink-navbar">
+      <div class="container">
+         <a class="navbar-brand" href="">
+            <div class="logo-image">
+               <img src="https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/logo%20(1).png"
+                  class="img-fluid">
+            </div>
+         </a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+               <a class="nav-link" href="#home">Home</a>
+               <a class="nav-link" href="#assistance">Assistance</a>
+               <a class="nav-link" href="#events">Events</a>
+               <button class="btnLogin-popup">Login</button>
+            </ul>
+         </div>
+      </div>
+   </nav>
+
+   <section id="home">
+      <div class="container text-center">
+         <div class="row justify-content-center">
+            <div class="col-md-10">
+               <h1 class="text-white display-4"><span>Tanauan City <br></span> Scholarship Program</h1>
+               <p class="text-white">"Education is the key that unlocks the doors of opportunity, and scholarships are
+                  the catalyst that ignites the flames of brilliance."</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <div class="wrapper">
+
+      <div class="wrapperlogin" id="loginWrapper">
+         <div class="loginbtn">
+            <i class="material-icons assistance-close-btn">close</i>
+         </div>
+
+
+         <div class="form-box login">
+            <img src="https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/logo%20(1).png">
+            <div class="button">
+               <a href=""><button class="btnapplicant">Applicant</button></a>
+            </div>
+            <div class="button">
+               <a href=""><button class="btnmaintainer">Maintainer</button></a>
+            </div>
+            <h7>By using this service, you understood and agree to the T.Iskonnect Services <span>Terms of Use</span>
+               and
+               <span>Privacy
+                  Statement</span>
+            </h7>
+         </div>
+      </div>
+   </div>
+
+   <section class="assistance section" id="assistance">
+      <div class="container flex-center">
+         <div class="content">
+            <div class="assistance-list">
+               <div class="img-card-container">
+                  <div class="img-card">
+                     <div class="overlay"></div>
+                     <div class="info">
+                        <h3>Elementary</h3>
+                        <span>Educational Assistance</span>
+                     </div>
+                     <img src="https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/assistance.png" alt="">
+                  </div>
+                  <div class="assistance-model flex-center">
+                     <div class="assistance-model-body">
+                        <i class="material-icons assistance-close-btn">close</i>
+                        <h3>Elementary Educational Assistance</h3>
+                        <p><span>Requirements:</span>
+                           <br>Assistance Form
+                           <br> Certified True Copy of Previous Grades
+                           <br>School Registration
+                           <br>Certificate of Good Moral
+                           <br>Certificate of Residency
+
+                           <br>
+
+                           <span1><br> Grade 1 from Grade 6 students can apply
+                              <br> No failing grade
+                              <br>Must be a bonafide resident of Tanauan City, Batangas
+                           </span1>
+                        </p>
+                        <a href="" class="apply-button">Apply</a>
+                     </div>
+
+                  </div>
+               </div>
+
+               <div class="img-card-container">
+                  <div class="img-card">
+                     <div class="overlay"></div>
+                     <div class="info">
+                        <h3>Highschool</h3>
+                        <span>Educational Assistance</span>
+                     </div>
+                     <img src="https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/assistance%20(1).png"
+                        alt="">
+                  </div>
+                  <div class="assistance-model flex-center">
+                     <div class="assistance-model-body">
+                        <i class="material-icons assistance-close-btn">close</i>
+                        <h3>Highschool Educational Assistance</h3>
+                        <p><span>Requirements:</span>
+                           <br>Assistance Form
+                           <br> Certified True Copy of Previous Grades
+                           <br>School Registration
+                           <br>Certificate of Good Moral
+                           <br>Certificate of Residency
+
+                           <br>
+
+                           <span1><br> Highschool students can apply
+                              <br> No failing grade
+                              <br>Must be a bonafide resident of Tanauan City, Batangas
+                           </span1>
+                        </p>
+                        <a href="" class="apply-button">Apply</a>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="img-card-container">
+                  <div class="img-card">
+                     <div class="overlay"></div>
+                     <div class="info">
+                        <h3>College</h3>
+                        <span>Educational Assistance</span>
+                     </div>
+                     <img src="https://raw.githubusercontent.com/llnmmntbln/T-Iskonnect/main/assistance%20(2).png"
+                        alt="">
+                  </div>
+                  <div class="assistance-model flex-center">
+                     <div class="assistance-model-body">
+                        <i class="material-icons assistance-close-btn">close</i>
+                        <h3>College Educational Assistance</h3>
+                        <p><span>Requirements:</span>
+                           <br>Assistance Form
+                           <br> Certified True Copy of Previous Grades
+                           <br>School Registration
+                           <br>Certificate of Good Moral
+                           <br>Certificate of Residency
+
+                           <br>
+
+                           <span1><br> College students can apply
+                              <br> No failing grade
+                              <br>Must be a bonafide resident of Tanauan City, Batangas
+                           </span1>
+                        </p>
+                        <a href="" class="apply-button">Apply</a>
+                     </div>
+                  </div>
+               </div>
+   </section>
+
+   <section id="events">
+      <div class="col-md-10">
+         <h1>Schedule of Events</h1>
+      </div>
+      <div class="table-box">
+         <div class="table-row table-head">
+            <div class="table-cell first-cell">
+               <p>Date</p>
+            </div>
+            <div class="table-cell">
+               <p>Time</p>
+            </div>
+            <div class="table-cell last-cell">
+               <p>Event</p>
+            </div>
+         </div>
+
+
+         <div class="table-row">
+            <div class="table-cell first-cell">
+               <p></p>
+            </div>
+            <div class="table-cell">
+               <p></p>
+            </div>
+            <div class="table-cell last-cell">
+               <a></a>
+            </div>
+         </div>
+
+
+         <div class="table-row">
+            <div class="table-cell first-cell">
+               <p></p>
+            </div>
+            <div class="table-cell">
+               <p></p>
+            </div>
+            <div class="table-cell last-cell">
+               <a></a>
+            </div>
+         </div>
+
+         <div class="table-row">
+            <div class="table-cell first-cell">
+               <p></p>
+            </div>
+            <div class="table-cell">
+               <p></p>
+            </div>
+            <div class="table-cell last-cell">
+               <a></a>
+            </div>
+         </div>
+
+         <div class="table-row">
+            <div class="table-cell first-cell">
+               <p></p>
+            </div>
+            <div class="table-cell">
+               <p></p>
+            </div>
+            <div class="table-cell last-cell">
+               <a></a>
+            </div>
+         </div>
+
+         <div class="table-row">
+            <div class="table-cell first-cell">
+               <p></p>
+            </div>
+            <div class="table-cell">
+               <p></p>
+            </div>
+            <div class="table-cell last-cell">
+               <a></a>
+            </div>
+         </div>
+
+   </section>
+
+
+   <div class="footer">
+      <div class="container">
+         <div class="row justify-content-between gy-3">
+            <div class="col-auto">
+               <p class="mb-0">© Tanauan Iskonnect</p>
+            </div>
+            <div class="col-auto">
+               <p class="mb-0">Capstone | BSIT 4-1</p>
+            </div>
+         </div>
+      </div>
+   </div>
+   </footer>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"></script>
+
+   <script>
+
+
+      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+      window.addEventListener("scroll", function () {
+         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollToTopBtn.style.display = "block";
+         } else {
+            scrollToTopBtn.style.display = "none";
+         }
+      });
+
+      scrollToTopBtn.addEventListener("click", function () {
+         document.documentElement.scrollTop = 0;
+      });
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+         const navbar = document.querySelector(".navbar");
+
+         window.addEventListener("scroll", function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+               navbar.classList.add("shrink-navbar");
+            } else {
+               navbar.classList.remove("shrink-navbar");
+            }
+         });
+
+         const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+         window.addEventListener("scroll", function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+               scrollToTopBtn.style.display = "block";
+            } else {
+               scrollToTopBtn.style.display = "none";
+            }
+         });
+
+         scrollToTopBtn.addEventListener("click", function () {
+            document.documentElement.scrollTop = 0;
+            navbar.classList.remove("shrink-navbar");
+         });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+         const wrapper = document.querySelector('.wrapper');
+         const overlay = document.querySelector('.overlay');
+         const body = document.body;
+
+         const btnPopup = document.querySelector('.btnLogin-popup');
+         btnPopup.addEventListener('click', () => {
+            wrapper.classList.add('active-popup');
+            overlay.classList.add('active-overlay');
+            body.classList.add('popup-open');
+         });
+
+         wrapper.addEventListener('click', function (event) {
+            if (event.target.classList.contains('assistance-close-btn')) {
+               wrapper.classList.remove('active-popup');
+               overlay.classList.remove('active-overlay');
+               body.classList.remove('popup-open');
+            }
+         });
+
+         const assistanceModals = document.querySelectorAll(".assistance-model");
+         const imgCards = document.querySelectorAll(".img-card");
+         const assistanceCloseBtns = document.querySelectorAll(".assistance-close-btn");
+
+         function showAssistanceModal(modalClick) {
+            assistanceModals[modalClick].classList.add("active");
+            body.classList.add('popup-open');
+         }
+
+         imgCards.forEach((imgCard, i) => {
+            imgCard.addEventListener("click", () => {
+               showAssistanceModal(i);
+            });
+         });
+
+         assistanceCloseBtns.forEach((assistanceCloseBtn) => {
+            assistanceCloseBtn.addEventListener("click", () => {
+               assistanceModals.forEach((assistanceModalView) => {
+                  assistanceModalView.classList.remove("active");
+               });
+               body.classList.remove('popup-open');
+            });
+         });
+      });
+   </script>
+
+
+</body>
+
+</html>
